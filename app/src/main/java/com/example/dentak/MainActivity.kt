@@ -7,7 +7,7 @@ import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
     /*メンバ変数*/
-    var f = flag()
+    var f = Calculation()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,48 +35,55 @@ class MainActivity : AppCompatActivity() {
         /*テキストビュー*/
         //表示画面
         val disp = findViewById<TextView>(R.id.disp)
-        disp.text = f.NumberFormat(flag.dispry)
+        disp.text = f.InputFormat(Calculation.display)
+        val tv_operator = findViewById<TextView>(R.id.tv_operator)
         /*ボタンの処理*/
         //数字
         btnlist.forEachIndexed { i, button ->
             button.setOnClickListener {
                 f.Input(((i).toString()))
-                disp.text = f.NumberFormat(flag.dispry)
+                disp.text = f.InputFormat(Calculation.display)
             }
         }
         //演算子
         btn_add.setOnClickListener {
             f.Input("+")
-            disp.text = f.NumberFormat(flag.dispry)
+            tv_operator.text = "+"
+            disp.text = f.InputFormat(Calculation.display)
         }
         btn_sub.setOnClickListener {
             f.Input("-")
-            disp.text = f.NumberFormat(flag.dispry)
+            tv_operator.text = "-"
+            disp.text = f.InputFormat(Calculation.display)
         }
         btn_div.setOnClickListener {
             f.Input("/")
-            disp.text = f.NumberFormat(flag.dispry)
+            tv_operator.text = "÷"
+            disp.text = f.InputFormat(Calculation.display)
         }
         btn_mul.setOnClickListener {
             f.Input("*")
-            disp.text = f.NumberFormat(flag.dispry)
+            tv_operator.text = "×"
+            disp.text = f.InputFormat(Calculation.display)
         }
 
         btn_equal.setOnClickListener {
             f.Input("=")
-            disp.text = f.NumberFormat(flag.dispry)
+            tv_operator.text = ""
+            disp.text = f.InputFormat(Calculation.display)
         }
         btn_C.setOnClickListener {
             f.Input("C")
-            disp.text = f.NumberFormat(flag.dispry)
+            tv_operator.text = ""
+            disp.text = f.InputFormat(Calculation.display)
         }
         btn_PlusMinus.setOnClickListener {
             f.Input("+/-")
-            disp.text = f.NumberFormat(flag.dispry)
+            disp.text = f.InputFormat(Calculation.display)
         }
         btn_point.setOnClickListener {
             f.Input(".")
-            disp.text = flag.dispry
+            disp.text = Calculation.display
         }
     }
 
