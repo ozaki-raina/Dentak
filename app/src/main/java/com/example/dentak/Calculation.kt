@@ -23,14 +23,14 @@ class Calculation {
         "0","1", "2", "3", "4", "5", "6", "7", "8", "9" ->
             if (num.length < 9) {
                 num += input
-                if(num == "0" && input == "0"){
+                if(num == "00" && input == "0"){
                     num = num.drop(1)
                 }else {
                     num = NumberFormat(num)
                     display = num
                 }
             }
-        //「+」が入力されたとき
+       // 「+」が入力されたとき
         "+" -> if (operator == Status.NONE && display != "") {
             operator = Status.ADD
             total = display.toDouble()
@@ -82,6 +82,64 @@ class Calculation {
             total = 0.0
             num = ""
         }
+//        //実験
+//        "0","1", "2", "3", "4", "5", "6", "7", "8", "9" ->
+//            if (num.length < 9 && operator == Status.NONE) {
+//                num += input
+//                if(num == "0" && input == "0"){
+//                    num = num.drop(1)
+//                }else {
+//                    num = NumberFormat(num)
+//                    display = num
+//                }
+//            }
+//        "+" -> if (operator == Status.NONE && display != "") {
+//            operator = Status.ADD
+//            total = display.toDouble()
+//            num = ""
+//        } else if (operator != Status.NONE) {
+//            operator = Status.ADD
+//            display = total.toString()
+//            num = ""
+//        }
+//        //「-」が入力されたとき
+//        "-" -> if (operator == Status.NONE && display != "") {
+//            operator = Status.SUB
+//            total = display.toDouble()
+//            num = ""
+//        } else if (operator != Status.NONE) {
+//            operator = Status.SUB
+//            display = total.toString()
+//            num = ""
+//        }
+//        //「÷」が入力されたとき
+//        "/" -> if (operator == Status.NONE && display != "") {
+//            operator = Status.DIV
+//            total = display.toDouble()
+//            num = ""
+//        } else if (operator != Status.NONE) {
+//            operator = Status.DIV
+//            display = total.toString()
+//            num = "";
+//        }
+//        //「×」が入力されたとき
+//        "*" -> if (operator == Status.NONE && display != "") {
+//            operator = Status.MUL
+//            total = display.toDouble()
+//            num = ""
+//        } else if (operator != Status.NONE) {
+//            operator = Status.MUL
+//            display = total.toString()
+//            num = "";
+//        }
+//        //「=」が入力されたとき
+//        "=" -> {
+//            calc(operator)
+//            display = total.toString()
+//            operator = Status.NONE
+//            total = 0.0
+//            num = ""
+//        }
         //「C」が入力されたとき
         "C" -> {
             num = ""
@@ -179,7 +237,7 @@ class Calculation {
         }
         /*計算結果が13桁以上の場合*/
         if(formatstr.length > 13){
-            formatstr = String.format("%9e" , doubleNum)
+            formatstr = String.format("%E" , doubleNum)
         }
         return formatstr
     }

@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
@@ -30,6 +31,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="right"
+            android:textColor="@color/black"
             android:textSize="50dp"
             />
     <TextView
@@ -39,6 +41,7 @@
         android:layout_weight="5"
         android:gravity="right"
         android:textSize="50dp"
+        android:textColor="@color/black"
         android:maxLength="12"
        />
 
@@ -62,10 +65,11 @@
             android:layout_margin="3dp"/>
 
         <Button
+            android:id="@+id/btn_color"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text=""
+            android:text="@string/btn_black"
             android:textSize="20dp"
             android:layout_margin="3dp"/>
 

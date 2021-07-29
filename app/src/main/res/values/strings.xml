@@ -18,4 +18,6 @@
     <string name="btn_equal">=</string>
     <string name="btn_clear">C</string>
     <string name="btn_PlusMinus">+/-</string>
+    <string name="btn_black">黒</string>
+    <string name="btn_white">白</string>
 </resources>

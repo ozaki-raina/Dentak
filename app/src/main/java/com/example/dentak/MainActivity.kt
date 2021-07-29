@@ -1,13 +1,16 @@
 package com.example.dentak
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
     /*メンバ変数*/
-    var f = Calculation()
+    var cal = Calculation()
+    var color = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,58 +35,77 @@ class MainActivity : AppCompatActivity() {
         val btn_point = findViewById<Button>(R.id.btn_point)
         //+/-ボタン
         val btn_PlusMinus = findViewById<Button>(R.id.btn_plus_minus)
+        //色
+        val btn_color = findViewById<Button>(R.id.btn_color)
+        val layout = findViewById<View>(R.id.layout)
         /*テキストビュー*/
         //表示画面
         val disp = findViewById<TextView>(R.id.disp)
-        disp.text = f.InputFormat(Calculation.display)
+        disp.text = cal.InputFormat(Calculation.display)
         val tv_operator = findViewById<TextView>(R.id.tv_operator)
         /*ボタンの処理*/
         //数字
         btnlist.forEachIndexed { i, button ->
             button.setOnClickListener {
-                f.Input(((i).toString()))
-                disp.text = f.InputFormat(Calculation.display)
+                cal.Input(((i).toString()))
+                disp.text = cal.InputFormat(Calculation.display)
             }
         }
         //演算子
         btn_add.setOnClickListener {
-            f.Input("+")
+            cal.Input("+")
             tv_operator.text = "+"
-            disp.text = f.InputFormat(Calculation.display)
+            disp.text = cal.InputFormat(Calculation.display)
         }
         btn_sub.setOnClickListener {
-            f.Input("-")
+            cal.Input("-")
             tv_operator.text = "-"
-            disp.text = f.InputFormat(Calculation.display)
+            disp.text = cal.InputFormat(Calculation.display)
         }
         btn_div.setOnClickListener {
-            f.Input("/")
+            cal.Input("/")
             tv_operator.text = "÷"
-            disp.text = f.InputFormat(Calculation.display)
+            disp.text = cal.InputFormat(Calculation.display)
         }
         btn_mul.setOnClickListener {
-            f.Input("*")
+            cal.Input("*")
             tv_operator.text = "×"
-            disp.text = f.InputFormat(Calculation.display)
+            disp.text = cal.InputFormat(Calculation.display)
         }
 
         btn_equal.setOnClickListener {
-            f.Input("=")
+            cal.Input("=")
             tv_operator.text = ""
-            disp.text = f.InputFormat(Calculation.display)
+            disp.text = cal.InputFormat(Calculation.display)
         }
         btn_C.setOnClickListener {
-            f.Input("C")
+            cal.Input("C")
             tv_operator.text = ""
-            disp.text = f.InputFormat(Calculation.display)
+            disp.text = cal.InputFormat(Calculation.display)
         }
         btn_PlusMinus.setOnClickListener {
-            f.Input("+/-")
-            disp.text = f.InputFormat(Calculation.display)
+            cal.Input("+/-")
+            disp.text = cal.InputFormat(Calculation.display)
         }
         btn_point.setOnClickListener {
-            f.Input(".")
+            cal.Input(".")
             disp.text = Calculation.display
+        }
+        btn_color.setOnClickListener{
+            if(color) {
+                layout.background = getDrawable(R.color.black)
+                disp.setTextColor(Color.WHITE)
+                tv_operator.setTextColor(Color.WHITE)
+                btn_color.setText(R.string.btn_white)
+                color = !color
+            }else{
+                layout.background = getDrawable(R.color.white)
+                disp.setTextColor(Color.BLACK)
+                tv_operator.setTextColor(Color.BLACK)
+                btn_color.setText(R.string.btn_black)
+                color = !color
+            }
+
         }
     }
 
