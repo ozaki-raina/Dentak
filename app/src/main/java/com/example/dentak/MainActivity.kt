@@ -10,7 +10,7 @@ import android.widget.TextView
 class MainActivity : AppCompatActivity() {
     /*メンバ変数*/
     var cal = Calculation()
-    var color = true
+    var iscolor = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,7 +72,6 @@ class MainActivity : AppCompatActivity() {
             tv_operator.text = "×"
             disp.text = cal.InputFormat(Calculation.display)
         }
-
         btn_equal.setOnClickListener {
             cal.Input("=")
             tv_operator.text = ""
@@ -92,21 +91,19 @@ class MainActivity : AppCompatActivity() {
             disp.text = Calculation.display
         }
         btn_color.setOnClickListener{
-            if(color) {
+            if(iscolor) {
                 layout.background = getDrawable(R.color.black)
                 disp.setTextColor(Color.WHITE)
                 tv_operator.setTextColor(Color.WHITE)
                 btn_color.setText(R.string.btn_white)
-                color = !color
+                iscolor = !iscolor
             }else{
                 layout.background = getDrawable(R.color.white)
                 disp.setTextColor(Color.BLACK)
                 tv_operator.setTextColor(Color.BLACK)
                 btn_color.setText(R.string.btn_black)
-                color = !color
+                iscolor = !iscolor
             }
-
         }
     }
-
 }
